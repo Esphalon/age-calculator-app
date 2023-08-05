@@ -19,9 +19,6 @@ const grabInput = () => {
   const inputDay = document.getElementById("input-day").value;
 
   console.log(`${inputYear}/${inputMonth}/${inputDay}`);
-
-  const currentDate = new Date(dateYear, dateMonth -1, dateDay); 
-  const givenDate = new Date(inputYear, inputMonth -1, inputDay);
   
    // Calculate the difference in years
    let yearsDifference = dateYear - inputYear;
@@ -44,6 +41,7 @@ const grabInput = () => {
     yearsDifference--;
     monthsDifference += 12;
   }
+  
   calcYear.innerHTML = yearsDifference;
   calcMonth.innerHTML = monthsDifference;
   calcDay.innerHTML = daysDifference;

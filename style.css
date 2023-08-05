@@ -1,3 +1,123 @@
+:root{
+  
+  /* Color Variables */
+  --clr-p-purple: hsl(259, 100%, 65%);
+  --clr-p-red: hsl(0, 100%, 67%);
+
+  --clr-n-white:hsl(0, 0%, 100%);
+  --clr-n-off-white:hsl(0, 0%, 94%);
+  --clr-n-light-grey:hsl(0, 0%, 86);
+  --clr-n-smokey-grey:hsl(0, 1%, 44%);
+  --clr-n-off-black:hsl(0, 0%, 8%);
+
+  /* Font sizes */
+  --fs-body: 1rem;
+  --fs-input: 1.5rem;
+  --fs-result: 4rem;
+
+  --ff-primary:'Poppins', sans-serif;
+  --fw-400: 400;
+  --fw-700: 700;
+  --fw-800: 800;
+}
+
+
+
+/* Utility-classes */
+
+
+.padding-extra-large{
+  padding: 4rem;
+}
+.padding-large{
+  padding: 3rem;
+}
+.padding-medium{
+  padding: 2rem;
+}
+.padding-small{
+  padding: .825rem;
+}
+
+
+body{
+  font-family: var(--ff-primary);
+  background-color: var(--clr-n-off-white);
+}
+@media(min-width: 47em){
+  body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+main{
+  background-color: var(--clr-n-white);
+  width: 840px;
+  border-radius: 32px 32px 240px 32px;
+}
+
+
+/* Set input field CSS */
+
+.input-fields{
+  display: flex;
+  gap: 2rem;
+}
+.input{
+  display: flex;
+  flex-direction: column;
+  max-width: 160px;
+}
+.input label{
+  font-size: var(--fs-body);
+  text-transform: uppercase;
+  color: var(--clr-n-smokey-grey);
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+.input input{
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  font-size: var(--fs-input);
+  font-family:var(--ff-primary);
+}
+
+
+.send-date{
+  color:var(--clr-p-purple);
+  background-color:var(--clr-p-purple);
+  border: none;
+  border-radius: 100%;
+  height: 120px;
+  width: 120px;
+}
+
+.submit{
+  position: relative;
+}
+hr{
+  margin-block: 2.5rem;
+  margin-right: 20px;
+}
+.send-date{
+  position: absolute;
+  right: 20px;
+  top: -60px;
+}
+
+/* Result page CSS */
+
+.result-text{
+  font-size: var(--fs-result);
+  font-weight: 800;
+  font-style: italic;
+  margin-block: 16px;
+  line-height: 1;
+}
+
 .highlight-number{
-  font-size: 4rem;
+  color: var(--clr-p-purple);
 }
