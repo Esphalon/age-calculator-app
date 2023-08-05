@@ -33,7 +33,7 @@
   padding: 3rem;
 }
 .padding-medium{
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .padding-small{
   padding: .825rem;
@@ -43,6 +43,7 @@
 body{
   font-family: var(--ff-primary);
   background-color: var(--clr-n-off-white);
+  margin: 0px;
 }
 @media(min-width: 47em){
   body{
@@ -50,12 +51,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 }
 main{
   background-color: var(--clr-n-white);
-  width: 840px;
-  border-radius: 32px 32px 240px 32px;
+  
+}
+@media(min-width: 47em){
+  main{
+    width: 840px;
+    border-radius: 32px 32px 240px 32px;
+  }
 }
 
 
@@ -68,7 +75,12 @@ main{
 .input{
   display: flex;
   flex-direction: column;
-  max-width: 160px;
+  max-width: 30%;
+}
+@media(min-width: 47em){
+  .input{
+    max-width: 160px;
+  }
 }
 .input label{
   font-size: var(--fs-body);
@@ -77,6 +89,9 @@ main{
   letter-spacing: 4px;
   margin-bottom: 8px;
 }
+.input[error] label{
+  color:var(--clr-p-red);
+}
 .input input{
   height: 40px;
   border: 1px solid #e6e6e6;
@@ -84,28 +99,55 @@ main{
   font-size: var(--fs-input);
   font-family:var(--ff-primary);
 }
-
-
-.send-date{
-  color:var(--clr-p-purple);
-  background-color:var(--clr-p-purple);
-  border: none;
-  border-radius: 100%;
-  height: 120px;
-  width: 120px;
+.input[error] input {
+  border-color: var(--clr-p-red);
 }
 
 .submit{
   position: relative;
 }
-hr{
-  margin-block: 2.5rem;
-  margin-right: 20px;
-}
 .send-date{
+  color:var(--clr-p-purple);
+  background-color:var(--clr-p-purple);
+  border: none;
+  border-radius: 100%;
   position: absolute;
-  right: 20px;
-  top: -60px;
+  top: -44px;
+}
+@media(min-width: 47em){
+.send-date{
+    right: 20px;
+  }
+}
+@media(max-width:47em){
+  .send-date{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 32px;
+  }
+}
+
+hr{
+  margin-block: 4rem;
+  margin-right: 20px;
+  opacity: 0.4;
+}
+@media(min-width: 47em){
+  hr{
+    margin-block: 2.5rem;
+
+  }
+}
+
+.error-message{
+  color: var(--clr-p-red);
+  font-size: .825rem;
+  font-style: italic;
+  display: none;
+}
+.error-message[error]{
+  display: block;
 }
 
 /* Result page CSS */
@@ -120,4 +162,18 @@ hr{
 
 .highlight-number{
   color: var(--clr-p-purple);
+}
+.input
+
+/* Remove arrows CSS */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

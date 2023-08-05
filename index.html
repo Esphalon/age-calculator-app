@@ -14,28 +14,29 @@
     <main class="padding-large">
       <form onsubmit="return false" id="age-form" action="index.html" method="POST">
       <div class="input-fields">   
-        <div class="input">
+        <div class="input error-handler-day">
           <label for="input-day">Day</label>
           <input class="padding-small" type="number" id="input-day" name="input-day" value="">
         </div>
-        <div class="input">
+        <div class="input error-handler-month">
           <label for="input-month">Month</label>
           <input class="padding-small" type="number" id="input-month" name="input-month" value="">
         </div>
-        <div class="input">
+        <div class="input error-handler-year">
           <label for="input-year">Year</label>
           <input class="padding-small" type="number" id="input-year" name="input-year" value="">
         </div>
       </div>
+      <p class="error-message | error-handler-message">Must be a valid date</p>
         <div class="submit">
           <hr>
-          <input class="send-date" id="send-date" type="submit">
+          <input class="send-date | padding-medium" id="send-date" type="image" src="/images/icon-arrow.svg" alt="Submit">
         </div>
       </form>
       <section>
-        <p class="result-text"><span class="calc-year | highlight-number">33</span> years</p>
-        <p class="result-text"><span class="calc-month | highlight-number ">2</span> months</p>
-        <p class="result-text"><span class="calc-day | highlight-number ">11</span> days</p>
+        <p class="result-text"><span class="calc-year | highlight-number">- -</span> years</p>
+        <p class="result-text"><span class="calc-month | highlight-number ">- -</span> months</p>
+        <p class="result-text"><span class="calc-day | highlight-number ">- -</span> days</p>
       </section>
     </main>
     <script type="module" src="/main.js"></script>
