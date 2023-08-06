@@ -6,7 +6,11 @@ const calcDay = document.querySelector(".calc-day");
 const checkDay =document.getElementById('input-day');
 const checkMonth =document.getElementById('input-month');
 const checkYear =document.getElementById('input-year');
+const monthCalc = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+let okayDay = false;
+let okayMonth = false;
+let okayYear = false;
 
 let setDay = 0;
 const setMonth = 0;
@@ -23,10 +27,12 @@ const grabInput = () => {
   const inputMonth = document.getElementById("input-month").value;
   const inputDay = document.getElementById("input-day").value;
 
-  const monthCalc = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  validDay();
+  validMonth();
+  validYear();
 
   console.log(`${inputYear}/${inputMonth}/${inputDay}`);
-  if(inputDay <= 31 && inputDay > 0 && inputMonth <= 12 && inputMonth > 0 && inputYear <= dateYear && monthCalc[inputMonth] > inputDay){
+  if(okayDay && okayDay && okayDay){
     removeError();
     calculateDifference();
   }else{
@@ -84,12 +90,15 @@ const grabInput = () => {
   }
 
   function validDay(){
-    if(checkDay.value > 31 || checkDay.value == 0){
+    const inputMonth = document.getElementById("input-month").value;
+
+    if(checkDay.value > 31 || checkDay.value == 0 || checkDay.value < monthCalc[inputMonth]){
       const errorDay = document.querySelector(".error-handler-day");
       errorDay.setAttribute("error",'');
     }else{
       const errorDay = document.querySelector(".error-handler-day");
       errorDay.removeAttribute("error");
+      return okayDay = true;
     }
   }
   function validMonth(){
@@ -99,20 +108,19 @@ const grabInput = () => {
     }else{
       const errorMonth = document.querySelector(".error-handler-month");
       errorMonth.removeAttribute("error");
+      return okayMonth = true;
     }
   }
   function validYear(){
-    if(checkDay.value > 31){
+    if(checkYear.value < dateYear){
       const errorDay = document.querySelector(".error-handler-day");
       errorDay.setAttribute("error",'');
     }else{
       const errorDay = document.querySelector(".error-handler-day");
       errorDay.removeAttribute("error");
+      return okayYear = true;
     }
   }
 
-checkDay.addEventListener('input', validDay);
-checkMonth.addEventListener('input', validMonth);
-checkYear.addEventListener('input', validYear);
 sendDate.addEventListener('click', grabInput);
 
