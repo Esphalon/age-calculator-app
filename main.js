@@ -20,8 +20,10 @@ const grabInput = () => {
   const inputMonth = document.getElementById("input-month").value;
   const inputDay = document.getElementById("input-day").value;
 
+  const monthCalc = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
   console.log(`${inputYear}/${inputMonth}/${inputDay}`);
-  if(inputDay <= 31 && inputDay > 0 && inputMonth <= 12 && inputMonth > 0 && inputYear <= dateYear){
+  if(inputDay <= 31 && inputDay > 0 && inputMonth <= 12 && inputMonth > 0 && inputYear <= dateYear && monthCalc[inputMonth] > inputDay){
     removeError();
     calculateDifference();
   }else{
@@ -80,4 +82,4 @@ const grabInput = () => {
     errorMessage.removeAttribute("error");
   }
 
-sendDate.addEventListener('click', grabInput)
+sendDate.addEventListener('click', grabInput);

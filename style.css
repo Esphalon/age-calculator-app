@@ -60,7 +60,7 @@ main{
 }
 @media(min-width: 47em){
   main{
-    width: 840px;
+    width: 740px;
     border-radius: 32px 32px 240px 32px;
   }
 }
