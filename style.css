@@ -30,7 +30,12 @@
   padding: 4rem;
 }
 .padding-large{
-  padding: 3rem;
+  padding: 1rem;
+}
+@media(min-width: 47em){
+  .padding-large{
+    padding: 3rem;
+  }
 }
 .padding-medium{
   padding: 1.5rem;
@@ -70,8 +75,14 @@ main{
 
 .input-fields{
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
+@media(min-width: 47em){
+  .input-fields{
+    gap: 2rem;
+  }
+}
+
 .input{
   display: flex;
   flex-direction: column;
@@ -132,8 +143,8 @@ main{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 32px;
-    width: 32px;
+    height: 80px;
+    width: 80px;
   }
 }
 
