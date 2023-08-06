@@ -112,7 +112,9 @@ main{
   border: none;
   border-radius: 100%;
   position: absolute;
-  top: -44px;
+  top: -52px;
+  height: 52px;
+  width: 52px;
 }
 @media(min-width: 47em){
 .send-date{
@@ -125,9 +127,12 @@ main{
     left: 50%;
     transform: translate(-50%, -50%);
     height: 32px;
+    width: 32px;
   }
 }
-
+img{
+  color: purple;
+}
 hr{
   margin-block: 4rem;
   margin-right: 20px;
