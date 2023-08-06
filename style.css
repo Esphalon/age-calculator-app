@@ -115,7 +115,6 @@ main{
   top: -52px;
   height: 52px;
   width: 52px;
-  cursor: pointer;
 }
 @media(min-width: 47em){
 .send-date{
@@ -131,7 +130,9 @@ main{
     width: 32px;
   }
 }
-
+img{
+  color: purple;
+}
 hr{
   margin-block: 4rem;
   margin-right: 20px;
@@ -149,9 +150,8 @@ hr{
   font-size: .825rem;
   font-style: italic;
   display: none;
-  position: relative;
 }
-.error-handler-day[error] p{
+.error-message[error]{
   display: block;
 }
 

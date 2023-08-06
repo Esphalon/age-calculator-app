@@ -3,10 +3,6 @@ const calcYear = document.querySelector(".calc-year");
 const calcMonth = document.querySelector(".calc-month");
 const calcDay = document.querySelector(".calc-day");
 
-const checkDay =document.getElementById('input-day');
-const checkMonth =document.getElementById('input-month');
-const checkYear =document.getElementById('input-year');
-const monthCalc = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 let okayDay = false;
 let okayMonth = false;
@@ -21,18 +17,16 @@ const dateMonth = new Date().getMonth() +1;
 const dateDay = new Date().getDate();
 console.log(`${dateYear}/${dateMonth}/${dateDay}`);
 
+const monthCalc = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
 const grabInput = () => {
   // const inputYear = document.getElementById("input-year").value;
   const inputYear = document.getElementById("input-year").value;
   const inputMonth = document.getElementById("input-month").value;
   const inputDay = document.getElementById("input-day").value;
 
-  validDay();
-  validMonth();
-  validYear();
-
   console.log(`${inputYear}/${inputMonth}/${inputDay}`);
-  if(okayDay && okayDay && okayDay){
+  if(inputDay <= 31 && inputDay > 0 && inputMonth <= 12 && inputMonth > 0 && inputYear <= dateYear && monthCalc[inputMonth] > inputDay){
     removeError();
     calculateDifference();
   }else{
@@ -73,9 +67,11 @@ const grabInput = () => {
     const errorDay = document.querySelector(".error-handler-day");
     const errorMonth = document.querySelector(".error-handler-month");
     const errorYear = document.querySelector(".error-handler-year");
+    const errorMessage = document.querySelector(".error-handler-message");
     errorDay.setAttribute("error",'');
     errorMonth.setAttribute("error",'');
     errorYear.setAttribute("error",'');
+    errorMessage.setAttribute("error", '');
   }
 
   function removeError(){
@@ -89,38 +85,4 @@ const grabInput = () => {
     errorMessage.removeAttribute("error");
   }
 
-  function validDay(){
-    const inputMonth = document.getElementById("input-month").value;
-
-    if(checkDay.value > 31 || checkDay.value == 0 || checkDay.value < monthCalc[inputMonth]){
-      const errorDay = document.querySelector(".error-handler-day");
-      errorDay.setAttribute("error",'');
-    }else{
-      const errorDay = document.querySelector(".error-handler-day");
-      errorDay.removeAttribute("error");
-      return okayDay = true;
-    }
-  }
-  function validMonth(){
-    if(checkMonth.value > 12 || checkMonth.value == 0){
-      const errorMonth = document.querySelector(".error-handler-month");
-      errorMonth.setAttribute("error",'');
-    }else{
-      const errorMonth = document.querySelector(".error-handler-month");
-      errorMonth.removeAttribute("error");
-      return okayMonth = true;
-    }
-  }
-  function validYear(){
-    if(checkYear.value < dateYear){
-      const errorDay = document.querySelector(".error-handler-day");
-      errorDay.setAttribute("error",'');
-    }else{
-      const errorDay = document.querySelector(".error-handler-day");
-      errorDay.removeAttribute("error");
-      return okayYear = true;
-    }
-  }
-
 sendDate.addEventListener('click', grabInput);
-
