@@ -1,37 +1,97 @@
+// Gather input buttons, define fields where calc output will be shown
+
 const sendDate = document.getElementById("send-date");
 const calcYear = document.querySelector(".calc-year");
 const calcMonth = document.querySelector(".calc-month");
 const calcDay = document.querySelector(".calc-day");
-
-
-
-let setDay = 0;
-const setMonth = 0;
-const setYear = 0;
+// Checkers if calculate can be done
+let dayCorrect = false;
+let monthCorrect = false;
+let yearCorrect = false;
 
 const dateYear = new Date().getFullYear();
 const dateMonth = new Date().getMonth() +1;
 const dateDay = new Date().getDate();
-console.log(`${dateYear}/${dateMonth}/${dateDay}`);
 
 const grabInput = () => {
   // const inputYear = document.getElementById("input-year").value;
-  const inputYear = document.getElementById("input-year").value;
-  const inputMonth = document.getElementById("input-month").value;
-  const inputDay = document.getElementById("input-day").value;
-
-  const monthCalc = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
-  console.log(`${inputYear}/${inputMonth}/${inputDay}`);
-  if(inputDay <= 31 && inputDay > 0 && inputMonth <= 12 && inputMonth > 0 && inputYear <= dateYear && monthCalc[inputMonth] > inputDay){
+  daySetter();
+  monthSetter();
+  yearSetter();
+  
+  if(dayCorrect && monthCorrect && yearCorrect){
     removeError();
     calculateDifference();
-  }else{
-    showError();
+  }
+
+  function daySetter(){
+    const monthCalc = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    const inputDay = document.getElementById("input-day").value;
+    const inputMonth = document.getElementById("input-month").value;
+    console.log(monthCalc[inputMonth]);
+    
+    if(monthCalc[inputMonth] < inputDay || inputDay <= 0 || inputDay > 31){
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.setAttribute("error",'');
+      dayCorrect = false;
+    }else if(inputDay === ''){
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.setAttribute("empty",'');
+      errorDay.removeAttribute("error");
+      yearCorrect = false;
+    }else{
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.removeAttribute("error");
+      errorDay.removeAttribute("empty");
+      dayCorrect = true;
+    }
+  }
+
+  function monthSetter(){
+    const inputMonth = document.getElementById("input-month").value;
+
+    if(inputMonth >= 13 || inputMonth < 0){
+      const errorMonth = document.querySelector(".error-handler-month");
+      errorMonth.setAttribute("error",'');
+      monthCorrect = false;
+    }else if(inputMonth === ''){
+      const errorMonth = document.querySelector(".error-handler-month");
+      errorMonth.setAttribute("empty",'');
+      errorMonth.removeAttribute("error");
+      yearCorrect = false;
+    }else{
+      const errorMonth = document.querySelector(".error-handler-month");
+      errorMonth.removeAttribute("error");
+      errorMonth.removeAttribute("empty");
+      monthCorrect = true;
+    }
+  }
+
+  function yearSetter(){
+    const inputYear = document.getElementById("input-year").value;
+
+    if(inputYear > dateYear){
+      const errorYear = document.querySelector(".error-handler-year");
+      errorYear.setAttribute("error",'');
+      errorYear.removeAttribute("empty");
+      yearCorrect = false;
+    }else if(inputYear === ''){
+      const errorYear = document.querySelector(".error-handler-year");
+      errorYear.setAttribute("empty",'');
+      errorYear.removeAttribute("error");
+      yearCorrect = false;
+    }else{
+      const errorYear = document.querySelector(".error-handler-year");
+      errorYear.removeAttribute("error");
+      errorYear.removeAttribute("empty");
+      yearCorrect = true;
+    }
   }
 
  function calculateDifference(){
-
+  const inputYear = document.getElementById("input-year").value;
+  const inputMonth = document.getElementById("input-month").value;
+  const inputDay = document.getElementById("input-day").value;
       // Calculate the difference in years
      let yearsDifference = dateYear - inputYear;
 
@@ -53,22 +113,10 @@ const grabInput = () => {
       yearsDifference--;
       monthsDifference += 12;
     }
-
     calcYear.innerHTML = yearsDifference;
     calcMonth.innerHTML = monthsDifference;
     calcDay.innerHTML = daysDifference;
     }
-  }
-
-  function showError(){
-    const errorDay = document.querySelector(".error-handler-day");
-    const errorMonth = document.querySelector(".error-handler-month");
-    const errorYear = document.querySelector(".error-handler-year");
-    const errorMessage = document.querySelector(".error-handler-message");
-    errorDay.setAttribute("error",'');
-    errorMonth.setAttribute("error",'');
-    errorYear.setAttribute("error",'');
-    errorMessage.setAttribute("error", '');
   }
 
   function removeError(){
