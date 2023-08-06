@@ -13,7 +13,10 @@
   /* Font sizes */
   --fs-body: 1rem;
   --fs-input: 1.5rem;
-  --fs-result: 4rem;
+  --fs-result: 3rem;
+  @media(min-width: 47em){
+    --fs-result: 4rem;
+  }
 
   --ff-primary:'Poppins', sans-serif;
   --fw-400: 400;
@@ -49,6 +52,14 @@ body{
   font-family: var(--ff-primary);
   background-color: var(--clr-n-off-white);
   margin: 0px;
+
+
+}
+@media (max-width: 47em){
+body{
+  padding: 1rem;
+  margin-top: 25%;
+}
 }
 @media(min-width: 47em){
   body{
@@ -61,7 +72,7 @@ body{
 }
 main{
   background-color: var(--clr-n-white);
-  
+  border-radius: 32px 32px 140px 32px;
 }
 @media(min-width: 47em){
   main{
