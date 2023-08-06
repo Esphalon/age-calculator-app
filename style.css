@@ -92,6 +92,9 @@ main{
 .input[error] label{
   color:var(--clr-p-red);
 }
+.input[empty] label{
+  color:var(--clr-p-red);
+}
 .input input{
   height: 40px;
   border: 1px solid #e6e6e6;
@@ -102,19 +105,22 @@ main{
 .input[error] input {
   border-color: var(--clr-p-red);
 }
+.input[empty] input {
+  border-color: var(--clr-p-red);
+}
 
 .submit{
   position: relative;
 }
 .send-date{
-  color:var(--clr-p-purple);
   background-color:var(--clr-p-purple);
   border: none;
   border-radius: 100%;
   position: absolute;
-  top: -52px;
-  height: 52px;
-  width: 52px;
+  top: -46px;
+  height: 92px;
+  width: 92px;
+  cursor: pointer;
 }
 @media(min-width: 47em){
 .send-date{
@@ -130,9 +136,7 @@ main{
     width: 32px;
   }
 }
-img{
-  color: purple;
-}
+
 hr{
   margin-block: 4rem;
   margin-right: 20px;
@@ -151,7 +155,10 @@ hr{
   font-style: italic;
   display: none;
 }
-.error-message[error]{
+.input[error] p.error-handler-message{
+  display: block;
+}
+.input[empty] p.error-empty-message{
   display: block;
 }
 
