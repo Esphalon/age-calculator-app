@@ -3,6 +3,9 @@ const calcYear = document.querySelector(".calc-year");
 const calcMonth = document.querySelector(".calc-month");
 const calcDay = document.querySelector(".calc-day");
 
+const checkDay =document.getElementById('input-day');
+const checkMonth =document.getElementById('input-month');
+const checkYear =document.getElementById('input-year');
 
 
 let setDay = 0;
@@ -64,11 +67,9 @@ const grabInput = () => {
     const errorDay = document.querySelector(".error-handler-day");
     const errorMonth = document.querySelector(".error-handler-month");
     const errorYear = document.querySelector(".error-handler-year");
-    const errorMessage = document.querySelector(".error-handler-message");
     errorDay.setAttribute("error",'');
     errorMonth.setAttribute("error",'');
     errorYear.setAttribute("error",'');
-    errorMessage.setAttribute("error", '');
   }
 
   function removeError(){
@@ -82,4 +83,36 @@ const grabInput = () => {
     errorMessage.removeAttribute("error");
   }
 
+  function validDay(){
+    if(checkDay.value > 31 || checkDay.value == 0){
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.setAttribute("error",'');
+    }else{
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.removeAttribute("error");
+    }
+  }
+  function validMonth(){
+    if(checkMonth.value > 12 || checkMonth.value == 0){
+      const errorMonth = document.querySelector(".error-handler-month");
+      errorMonth.setAttribute("error",'');
+    }else{
+      const errorMonth = document.querySelector(".error-handler-month");
+      errorMonth.removeAttribute("error");
+    }
+  }
+  function validYear(){
+    if(checkDay.value > 31){
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.setAttribute("error",'');
+    }else{
+      const errorDay = document.querySelector(".error-handler-day");
+      errorDay.removeAttribute("error");
+    }
+  }
+
+checkDay.addEventListener('input', validDay);
+checkMonth.addEventListener('input', validMonth);
+checkYear.addEventListener('input', validYear);
 sendDate.addEventListener('click', grabInput);
+
